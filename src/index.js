@@ -1,4 +1,4 @@
-// import './prelude.js'
+import './prelude.js'
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 
@@ -8,12 +8,14 @@ import * as Bar2 from './bar.js'
 
 
 const IS_BROWSER = process.platform === 'browser';
-const IS_PRODUCTION = process.env === 'production';
+const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 const ENV = IS_PRODUCTION ? "production" : "development";
 
-global.React = React;
-global.ReactDOM = ReactDOM;
-global.HomePage = HomePage;
+if ( IS_BROWSER ) {
+    window.React = React;
+    window.ReactDOM = ReactDOM;
+    window.HomePage = HomePage;
+}
 
 
 class HomePage extends React.Component {
@@ -27,7 +29,7 @@ class HomePage extends React.Component {
         let self = this;
         console.log(self);
     }
-    
+
     render() {
         // React.createElement("h1", null, "Hi, 世界！")
         return (
