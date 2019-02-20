@@ -43,7 +43,7 @@ Install
 Build
 ---------
 
-..code:: bash
+.. code:: bash
     
     make build && make dist
 
